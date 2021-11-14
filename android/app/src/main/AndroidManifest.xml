@@ -11,6 +11,7 @@
         android:theme="@style/Theme.Faircorp">
         <activity
             android:name=".WindowActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
