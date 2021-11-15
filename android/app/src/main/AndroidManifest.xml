@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Faircorp">
         <activity
-            android:name=".WindowActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".WindowsActivity"
             android:exported="false" />
+        <activity
+            android:name=".WindowActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

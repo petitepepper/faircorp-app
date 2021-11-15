@@ -6,7 +6,7 @@ import android.widget.TextView
 
 //const val WINDOW_NAME_PARAM = "com.faircorp.windowname.attribute"
 
-class WindowActivity : AppCompatActivity() {
+class WindowActivity : BasicActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_window)
