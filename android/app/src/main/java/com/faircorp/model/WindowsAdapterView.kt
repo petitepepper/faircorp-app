@@ -40,7 +40,7 @@ class WindowAdapter(val listener: OnWindowSelectedListener) : RecyclerView.Adapt
     }
 
     // Method that define what to do when position in the list changes
-    override fun onBindViewHolder(holder: WindowViewHolder, position: Int) {  // (7)
+    override fun onBindViewHolder(holder: WindowViewHolder, position: Int) {
         val window = items[position]
         holder.apply {
             name.text = window.name

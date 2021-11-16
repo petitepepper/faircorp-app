@@ -5,7 +5,7 @@ import android.widget.TextView
 import com.faircorp.model.OnWindowSelectedListener
 import com.faircorp.model.WindowService
 
-const val WINDOW_NAME_PARAM = "com.faircorp.windowname.attribute"
+//const val WINDOW_NAME_PARAM = "com.faircorp.windowname.attribute"
 
 class WindowActivity : BasicActivity() {
 

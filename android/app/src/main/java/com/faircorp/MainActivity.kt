@@ -7,7 +7,7 @@ import android.widget.EditText
 import com.faircorp.model.OnWindowSelectedListener
 
 
-//const val WINDOW_NAME_PARAM = "com.faircorp.windowname.attribute"
+const val WINDOW_NAME_PARAM = "com.faircorp.windowname.attribute"
 
 class MainActivity : BasicActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +15,7 @@ class MainActivity : BasicActivity(){
         setContentView(R.layout.activity_main)
     }
 
-    //Version1: Set the name given and jump to WindowActivity
+    //Version1.0: Set the name given and jump to WindowActivity
 //    fun openWindow(view: View) {
 //        // Extract value filled in editext identified with txt_window_name id
 //        val windowName = findViewById<EditText>(R.id.tv_main_window_name).text.toString()
