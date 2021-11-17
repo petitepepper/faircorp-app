@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Codes/emse_project/web_mobile_programming/faircorp-app/android/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Codes/emse_project/web_mobile_programming/faircorp-app/android/app/src/main/res/layout/activity_window.xml" value="0.335" />
-        <entry key="..\:/Codes/emse_project/web_mobile_programming/faircorp-app/android/app/src/main/res/layout/activity_windows.xml" value="0.25" />
-        <entry key="..\:/Codes/emse_project/web_mobile_programming/faircorp-app/android/app/src/main/res/layout/activity_windows_item.xml" value="0.335" />
-        <entry key="..\:/Codes/emse_project/web_mobile_programming/faircorp-app/android/app/src/main/res/menu/menu.xml" value="0.335" />
+        <entry key="..\:/Codes/Androird/faircorp-app/app/src/main/res/drawable/ic_log.xml" value="0.1" />
+        <entry key="..\:/Codes/Androird/faircorp-app/app/src/main/res/layout/activity_basic.xml" value="0.11639492753623189" />
+        <entry key="..\:/Codes/Androird/faircorp-app/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Codes/Androird/faircorp-app/app/src/main/res/layout/activity_window.xml" value="0.335" />
+        <entry key="..\:/Codes/Androird/faircorp-app/app/src/main/res/layout/activity_windows.xml" value="0.11639492753623189" />
+        <entry key="..\:/Codes/Androird/faircorp-app/app/src/main/res/layout/activity_windows_item.xml" value="0.11639492753623189" />
+        <entry key="..\:/Codes/Androird/faircorp-app/app/src/main/res/menu/menu.xml" value="0.1" />
       </map>
     </option>
   </component>

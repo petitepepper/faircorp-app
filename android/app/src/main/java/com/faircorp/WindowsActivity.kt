@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,29 +16,22 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+class WindowsActivity : BasicActivity() , OnWindowSelectedListener {
 
-class WindowsActivity : BasicActivity(), OnWindowSelectedListener {
+    val windowService = WindowService() // (1)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_windows)
 
-        // Find the recycler view defined in layout by its id list_windows
-        val recyclerView = findViewById<RecyclerView>(R.id.list_windows)
-        // Create adapter and define recycler view properties
-        val adapter = WindowAdapter(this)
+        val recyclerView = findViewById<RecyclerView>(R.id.list_windows) // (2)
+        val adapter = WindowAdapter(this) // (3)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
 
-        // Version1.1: Update adapter dat ==> works well
-//        val windowService = WindowService()
-//        adapter.update(windowService.findAll())
-
-        // Version2.1: Use Remote API    ==> [ERROR] NO TOAST ERROR NOTIFICATION, EMPTY WINDOW LIST
-        // Manage successes and failures
         lifecycleScope.launch(context = Dispatchers.IO) { // (1)
             runCatching { ApiServices().windowsApiService.findAll().execute() } // (2)
                 .onSuccess {
@@ -57,13 +49,10 @@ class WindowsActivity : BasicActivity(), OnWindowSelectedListener {
                     }
                 }
         }
-
     }
 
-    // Use RecyclerView, click on item
     override fun onWindowSelected(id: Long) {
         val intent = Intent(this, WindowActivity::class.java).putExtra(WINDOW_NAME_PARAM, id)
         startActivity(intent)
     }
-
 }
