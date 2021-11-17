@@ -11,36 +11,35 @@ import androidx.recyclerview.widget.RecyclerView
 import com.faircorp.model.ApiServices
 import com.faircorp.model.OnWindowSelectedListener
 import com.faircorp.model.WindowAdapter
-import com.faircorp.model.WindowService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class WindowsActivity : BasicActivity() , OnWindowSelectedListener {
 
-    val windowService = WindowService() // (1)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_windows)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.list_windows) // (2)
-        val adapter = WindowAdapter(this) // (3)
+        val recyclerView = findViewById<RecyclerView>(R.id.list_windows)
+        val adapter = WindowAdapter(this)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
 
-        lifecycleScope.launch(context = Dispatchers.IO) { // (1)
-            runCatching { ApiServices().windowsApiService.findAll().execute() } // (2)
+        //Find all windows and show infomation of each
+        lifecycleScope.launch(context = Dispatchers.IO) {
+            runCatching { ApiServices().windowsApiService.findAll().execute() }
                 .onSuccess {
-                    withContext(context = Dispatchers.Main) { // (3)
+                    withContext(context = Dispatchers.Main) {
                         adapter.update(it.body() ?: emptyList())
                     }
                 }
                 .onFailure {
-                    withContext(context = Dispatchers.Main) { // (3)
+                    withContext(context = Dispatchers.Main) {
                         Toast.makeText(
                             applicationContext,
                             "Error on windows loading $it",

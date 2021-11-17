@@ -20,7 +20,6 @@ class MainActivity : BasicActivity() {
     fun openWindow(view: View) {
         // Extract value filled in editext identified with txt_window_name id
         val windowName = findViewById<EditText>(R.id.et_main_window_name).text.toString()
-        // Display a message
 
         // Do something in response to button
         val intent = Intent(this, WindowActivity::class.java).apply {
