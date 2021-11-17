@@ -4,10 +4,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 class ApiServices {
-    val API_url = "http://ye.wenjing.cleverapps.io/api/"
+    val API_url = "http://boussejra.amir.faircorp.cleverapps.io/api/"
     //"https://dev-mind.fr/training/android/"
+    //"http://ye.wenjing.cleverapps.io/api/"
     //
-    //"https://boussejra.amir.faircorp.cleverapps.io/api/"
     //"https://faircorp-yahya-mouman.cleverapps.io/faircorp/"
 
     val windowsApiService : WindowApiService by lazy {
