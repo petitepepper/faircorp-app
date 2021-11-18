@@ -13,7 +13,8 @@ class WindowActivity : BasicActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_window)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true) // add a button to go back on MainActivity
+        // add a button to go back on MainActivity
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
         // Get the id of window clicked in WindowsActivity
@@ -39,7 +40,7 @@ class WindowActivity : BasicActivity() {
                                             val room = it.body()
                                             if(room != null){
                                                 // show room name, and temperature information
-                                                findViewById<TextView>(R.id.txt_room_name).text =
+                                                findViewById<TextView>(R.id.txt_window_room_name).text =
                                                     room.name
                                                 findViewById<TextView>(R.id.txt_window_current_temperature).text =
                                                     room.currentTemperature?.toString()
