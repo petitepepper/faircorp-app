@@ -3,6 +3,7 @@ package com.faircorp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -29,7 +30,7 @@ class WindowsActivity : BasicActivity() , OnWindowSelectedListener {
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
 
-        //Find all windows and show infomation of each
+        //Find all windows and show information of each
         lifecycleScope.launch(context = Dispatchers.IO) {
             runCatching { ApiServices().windowsApiService.findAll().execute() }
                 .onSuccess {

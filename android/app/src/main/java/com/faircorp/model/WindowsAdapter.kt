@@ -51,6 +51,10 @@ class WindowAdapter (val listener: OnWindowSelectedListener): RecyclerView.Adapt
         holder.apply {
             itemView.setOnClickListener(null)
         }
-
     }
+
+
+
+
+
 }

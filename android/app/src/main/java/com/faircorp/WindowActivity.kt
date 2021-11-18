@@ -1,6 +1,8 @@
 package com.faircorp
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
@@ -10,15 +12,19 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class WindowActivity : BasicActivity() {
+
+
+    // Use "var" to make is available for switchStatus function
+    private var windowId = 0L
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_window)
         // add a button to go back on MainActivity
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-
         // Get the id of window clicked in WindowsActivity
-        val windowId = intent.getLongExtra(WINDOW_NAME_PARAM, 0)
+        windowId = intent.getLongExtra(WINDOW_NAME_PARAM, 0)
 
         // Consult information of this window by using its id
         lifecycleScope.launch(context = Dispatchers.IO) {
@@ -76,6 +82,32 @@ class WindowActivity : BasicActivity() {
         }
 
 
-
     }
+
+
+    //Button function to change window status
+    fun switchWindowStatus(view: View){
+        // Switch WindowStatus
+        lifecycleScope.launch(context = Dispatchers.IO) {
+            runCatching { ApiServices().windowsApiService.switchStatus(windowId).execute() }
+                .onSuccess {
+                    Toast.makeText(applicationContext, "WindowId: $windowId", Toast.LENGTH_SHORT).show()
+                    withContext(context = Dispatchers.Main) {
+                        View.inflate(applicationContext,R.layout.activity_window,null)
+                    }
+                }
+                .onFailure {
+                    withContext(context = Dispatchers.Main) {
+                        Toast.makeText(
+                            applicationContext,
+                            "WindowStatus change failed:  $it",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+        }
+    }
+
+
+
 }

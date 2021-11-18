@@ -18,7 +18,7 @@ class MainActivity : BasicActivity() {
 
     /** Called when the user taps the button */
     fun openWindow(view: View) {
-        // Extract value filled in editext identified with txt_window_name id
+        // Extract value filled in EditText identified with txt_window_name id
         val windowName = findViewById<EditText>(R.id.et_main_window_name).text.toString()
 
         // Do something in response to button
