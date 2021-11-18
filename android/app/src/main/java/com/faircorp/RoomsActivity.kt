@@ -9,20 +9,20 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.faircorp.model.ApiServices
-import com.faircorp.model.OnWindowSelectedListener
-import com.faircorp.model.WindowAdapter
+import com.faircorp.model.OnRoomSelectedListener
+import com.faircorp.model.RoomsAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class WindowsActivity : BasicActivity() , OnWindowSelectedListener {
+class RoomsActivity : BasicActivity() , OnRoomSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_windows)
+        setContentView(R.layout.activity_rooms)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.list_windows)
-        val adapter = WindowAdapter(this)
+        val recyclerView = findViewById<RecyclerView>(R.id.list_rooms)
+        val adapter = RoomsAdapter(this)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
@@ -31,7 +31,7 @@ class WindowsActivity : BasicActivity() , OnWindowSelectedListener {
 
         //Find all windows and show infomation of each
         lifecycleScope.launch(context = Dispatchers.IO) {
-            runCatching { ApiServices().windowsApiService.findAll().execute() }
+            runCatching { ApiServices().roomsApiService.findAll().execute() }
                 .onSuccess {
                     withContext(context = Dispatchers.Main) {
                         adapter.update(it.body() ?: emptyList())
@@ -41,7 +41,7 @@ class WindowsActivity : BasicActivity() , OnWindowSelectedListener {
                     withContext(context = Dispatchers.Main) {
                         Toast.makeText(
                             applicationContext,
-                            "Error on windows loading $it",
+                            "Error on rooms loading $it",
                             Toast.LENGTH_LONG
                         ).show()
                     }
@@ -49,8 +49,11 @@ class WindowsActivity : BasicActivity() , OnWindowSelectedListener {
         }
     }
 
-    override fun onWindowSelected(id: Long) {
-        val intent = Intent(this, WindowActivity::class.java).putExtra(WINDOW_NAME_PARAM, id)
+
+
+    override fun onRoomSelected(id: Long) {
+        val intent = Intent(this, RoomActivity::class.java).putExtra(ROOM_NAME_PARAM, id)
         startActivity(intent)
     }
+
 }

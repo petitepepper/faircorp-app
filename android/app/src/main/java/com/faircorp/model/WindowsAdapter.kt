@@ -12,7 +12,7 @@ class WindowAdapter (val listener: OnWindowSelectedListener): RecyclerView.Adapt
     inner class WindowViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.txt_item_window_name)
         val room: TextView = view.findViewById(R.id.txt_item_window_room)
-        val status: TextView = view.findViewById(R.id.txt_item_status)
+        val status: TextView = view.findViewById(R.id.txt_item_window_status)
     }
 
     // Adapter has a mutable list to store elements to display
@@ -25,6 +25,8 @@ class WindowAdapter (val listener: OnWindowSelectedListener): RecyclerView.Adapt
         windowItems.addAll(windows)
         notifyDataSetChanged()
     }
+
+
 
     override fun getItemCount(): Int = windowItems.size
 
